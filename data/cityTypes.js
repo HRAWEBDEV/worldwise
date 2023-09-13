@@ -10,6 +10,6 @@ const cityTypes = PropTypes.shape({
   lng: PropTypes.number,
  }),
  id: PropTypes.number,
-});
+}).isRequired;
 
 export { cityTypes };
