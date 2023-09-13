@@ -21,7 +21,6 @@ const App = () => {
     const result = await fetch(`${URI_BASE}/cities`);
     const data = await result.json();
     setCities(data);
-    console.log(data, cities, isLoading);
    } catch (error) {
     console.log(error);
    } finally {
