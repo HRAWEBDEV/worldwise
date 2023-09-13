@@ -9,8 +9,8 @@ import AppLayout from './pages/AppLayout';
 import CityList from './components/CityList';
 import CountryList from './components/CountryList';
 import City from './components/City';
+import { enviroment } from './env/env';
 import './index.css';
-const URI_BASE = 'http://localhost:8000';
 
 const App = () => {
  const [cities, setCities] = useState([]);
@@ -20,7 +20,7 @@ const App = () => {
   const getCities = async () => {
    setIsLoading(true);
    try {
-    const result = await fetch(`${URI_BASE}/cities`);
+    const result = await fetch(`${enviroment['BASE_URI']}/cities`);
     const data = await result.json();
     setCities(data);
    } catch (error) {
