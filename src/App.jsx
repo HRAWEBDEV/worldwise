@@ -9,6 +9,7 @@ import AppLayout from './pages/AppLayout';
 import CityList from './components/CityList';
 import CountryList from './components/CountryList';
 import City from './components/City';
+import Form from './components/Form';
 import { enviroment } from './env/env';
 import './index.css';
 
@@ -52,7 +53,7 @@ const App = () => {
       path='countries'
       element={<CountryList cities={cities} isLoading={isLoading} />}
      />
-     <Route path='forms' element={<p>forms</p>} />
+     <Route path='forms' element={<Form />} />
     </Route>
     <Route path='*' element={<NotFound />} />
    </Routes>
