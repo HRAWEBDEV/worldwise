@@ -4,6 +4,7 @@ import Pricing from './pages/Pricing';
 import Product from './pages/Product';
 import NotFound from './pages/PageNotFound';
 import Login from './pages/Login';
+import AppLayout from './pages/AppLayout';
 import './index.css';
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
     <Route path='/pricing' element={<Pricing />} />
     <Route path='/product' element={<Product />} />
     <Route path='/login' element={<Login />} />
+    <Route path='/app' element={<AppLayout />} />
     <Route path='*' element={<NotFound />} />
    </Routes>
   </BrowserRouter>

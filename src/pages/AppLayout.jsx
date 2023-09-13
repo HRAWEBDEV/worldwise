@@ -1,10 +1,9 @@
-import styles from './AppLayout.module.css';
-import PageNav from '../components/PageNav';
+import Sidebar from '../components/Sidebar';
 
 const AppLayout = () => {
  return (
   <div>
-   <PageNav />
+   <Sidebar />
   </div>
  );
 };
