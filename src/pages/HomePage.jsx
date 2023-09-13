@@ -1,5 +1,12 @@
+import Navigation from '../components/Navigation';
+
 const HomePage = () => {
- return <div>worldwise</div>;
+ return (
+  <div>
+   <Navigation />
+   homepage
+  </div>
+ );
 };
 
 export default HomePage;

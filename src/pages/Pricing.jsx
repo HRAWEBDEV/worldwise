@@ -1,5 +1,11 @@
+import Navigation from '../components/Navigation';
 const Pricing = () => {
- return <div>Pricing</div>;
+ return (
+  <div>
+   <Navigation />
+   pricing page
+  </div>
+ );
 };
 
 export default Pricing;
