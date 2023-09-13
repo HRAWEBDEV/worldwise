@@ -1,4 +1,5 @@
 import styles from './CityList.module.css';
+import { cityTypes } from '../../data/cityTypes';
 import PropTypes from 'prop-types';
 
 const CityList = ({ cities, isLoading }) => {
@@ -7,7 +8,7 @@ const CityList = ({ cities, isLoading }) => {
 };
 
 CityList.propTypes = {
- cities: PropTypes.arrayOf(PropTypes.shape({})),
+ cities: cityTypes,
  isLoading: PropTypes.bool,
 };
 
