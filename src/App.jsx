@@ -4,7 +4,7 @@ import Pricing from './pages/Pricing';
 import Product from './pages/Product';
 import NotFound from './pages/PageNotFound';
 import Login from './pages/Login';
-import '../index.css';
+import './index.css';
 
 const App = () => {
  return (
