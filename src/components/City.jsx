@@ -1,9 +1,9 @@
 import styles from './City.module.css';
-import { useState, useEffect } from 'react';
+import { useCities } from './CitiesProvider';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Spinner from './Spinner';
 import Message from './Message';
-import { enviroment } from '../env/env';
 const formatDate = (date) =>
  new Intl.DateTimeFormat('en', {
   day: 'numeric',
@@ -13,29 +13,17 @@ const formatDate = (date) =>
  }).format(new Date(date));
 
 function City() {
- const [city, setCity] = useState([]);
- const [isLoading, setIsLoading] = useState(false);
+ const {
+  currentCity: city,
+  currentCityIsLoading: isLoading,
+  updateTargetCity,
+ } = useCities();
  const param = useParams();
- console.log(param);
  // TEMP DATA
 
  useEffect(() => {
-  const getCity = async () => {
-   setIsLoading(true);
-   try {
-    const result = await fetch(
-     `${enviroment['BASE_URI']}/cities?id=${param.id}`
-    );
-    const data = await result.json();
-    setCity(data);
-   } catch (err) {
-    console.log(err);
-   } finally {
-    setIsLoading(false);
-   }
-  };
-  getCity();
- }, [param.id]);
+  updateTargetCity(param.id);
+ }, [param.id, updateTargetCity]);
 
  if (isLoading) return <Spinner />;
  if (!city.length) return <Message message='no city found' />;

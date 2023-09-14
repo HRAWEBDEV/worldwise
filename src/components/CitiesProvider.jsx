@@ -1,4 +1,10 @@
-import { createContext, useState, useEffect, useContext } from 'react';
+import {
+ createContext,
+ useState,
+ useEffect,
+ useContext,
+ useCallback,
+} from 'react';
 import { enviroment } from '../env/env';
 import PropTypes from 'prop-types';
 
@@ -13,6 +19,21 @@ const useCitites = () => {
 const CitiesProvider = ({ children }) => {
  const [cities, setCities] = useState([]);
  const [isLoading, setIsLoading] = useState(false);
+ const [currentCity, setCurrentCity] = useState([]);
+ const [currentCityLoading, setCurrentCityLoading] = useState(false);
+
+ const updateTargetCity = useCallback(async (id) => {
+  setCurrentCityLoading(true);
+  try {
+   const result = await fetch(`${enviroment['BASE_URI']}/cities?id=${id}`);
+   const data = await result.json();
+   setCurrentCity(data);
+  } catch (err) {
+   console.log(err);
+  } finally {
+   setCurrentCityLoading(false);
+  }
+ }, []);
 
  useEffect(() => {
   const getCities = async () => {
@@ -30,7 +51,15 @@ const CitiesProvider = ({ children }) => {
   getCities();
  }, []);
  return (
-  <citiesContext.Provider value={{ cities, isLoading }}>
+  <citiesContext.Provider
+   value={{
+    cities,
+    isLoading,
+    currentCity,
+    currentCityLoading,
+    updateTargetCity,
+   }}
+  >
    {children}
   </citiesContext.Provider>
  );
