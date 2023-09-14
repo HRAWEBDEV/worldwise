@@ -1,4 +1,5 @@
 import styles from './countryList.module.css';
+import { useCitites } from './CitiesProvider';
 import { cityTypes } from '../../data/cityTypes';
 import PropTypes from 'prop-types';
 import CountryItem from './CountryItem';
@@ -13,7 +14,8 @@ const createUniqueList = (data) => {
  }, []);
 };
 
-const CountryList = ({ cities, isLoading }) => {
+const CountryList = () => {
+ const { cities, isLoading } = useCitites();
  const countries = createUniqueList(cities);
  if (isLoading) return <Spinner />;
  if (!cities.length) return <Message message='no cities found' />;

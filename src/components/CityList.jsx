@@ -1,11 +1,13 @@
 import styles from './CityList.module.css';
+import { useCitites } from './CitiesProvider';
 import { cityTypes } from '../../data/cityTypes';
 import PropTypes from 'prop-types';
 import CityItem from './CityItem';
 import Spinner from './Spinner';
 import Message from './Message';
 
-const CityList = ({ cities, isLoading }) => {
+const CityList = () => {
+ const { cities, isLoading } = useCitites();
  if (isLoading) return <Spinner />;
  if (!cities.length) return <Message message='no cities found' />;
  return (
