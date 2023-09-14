@@ -1,20 +1,7 @@
-import {
- createContext,
- useState,
- useEffect,
- useContext,
- useCallback,
-} from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { citiesContext } from './cityProviderContext';
 import { enviroment } from '../env/env';
 import PropTypes from 'prop-types';
-
-const citiesContext = createContext(null);
-
-const useCitites = () => {
- const value = useContext(citiesContext);
- if (!value) throw new Error('contex is out of provider');
- return value;
-};
 
 const CitiesProvider = ({ children }) => {
  const [cities, setCities] = useState([]);
@@ -69,5 +56,4 @@ CitiesProvider.propTypes = {
  children: PropTypes.node,
 };
 
-export { useCitites };
 export default CitiesProvider;

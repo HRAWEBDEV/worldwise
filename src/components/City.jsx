@@ -1,9 +1,10 @@
 import styles from './City.module.css';
-import { useCities } from './CitiesProvider';
+import { useCities } from './cityProviderContext';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Spinner from './Spinner';
 import Message from './Message';
+import Button from './Button';
 const formatDate = (date) =>
  new Intl.DateTimeFormat('en', {
   day: 'numeric',
@@ -13,9 +14,10 @@ const formatDate = (date) =>
  }).format(new Date(date));
 
 function City() {
+ const navigate = useNavigate();
  const {
   currentCity: city,
-  currentCityIsLoading: isLoading,
+  currentCityLoading: isLoading,
   updateTargetCity,
  } = useCities();
  const param = useParams();
@@ -61,7 +63,11 @@ function City() {
     </a>
    </div>
 
-   <div>{/* <ButtonBack /> */}</div>
+   <div>
+    <Button type='back' onClick={() => navigate(-1)}>
+     back
+    </Button>
+   </div>
   </div>
  );
 }
